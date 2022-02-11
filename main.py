@@ -1,22 +1,22 @@
 from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.codeinput import CodeInput
-from pygments.lexers import PythonLexer
+from kivy.uix.colorpicker import ColorPicker
 
 
 class MainApp(App):
 
     def build(self):
         box = BoxLayout(orientation='vertical')
-        codeinput = CodeInput(lexer=PythonLexer())
-        box.add_widget(codeinput)
+        clr_picker = ColorPicker()
+        box.add_widget(clr_picker)
+
+        def on_color(instance, value):
+            print("RGBA = ", str(value))  # or instance.color
+            print("HSV = ", str(instance.hsv))
+            print("HEX = ", str(instance.hex_color))
+
+        clr_picker.bind(color=on_color)
         return box
-
-    # def on(self, *args):
-    #
-
 
 
 if __name__ == '__main__':

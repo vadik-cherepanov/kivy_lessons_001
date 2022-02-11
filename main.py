@@ -1,17 +1,21 @@
 from kivy.app import App
+from kivy.config import Config
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.colorpicker import ColorPicker
+from kivy.properties import ObjectProperty
 
+Config.set('graphics', 'width', '400')
+Config.set('graphics', 'height', '60')
 
-class MainApp(App):
+class KgWeight(BoxLayout):
+    kg_input = ObjectProperty(None)
+    gramm_result = ObjectProperty(None)
+    def convert_to_gramm(self):
+        self.gramm_result.text = str(float(self.kg_input.text) * 1000)
 
+class KgApp(App):
     def build(self):
-        box = BoxLayout(orientation='vertical')
-        clr_picker = ColorPicker()
-        box.add_widget(clr_picker)
-        return box
-
+        kg_weight = KgWeight()
+        return kg_weight
 
 if __name__ == '__main__':
-    app = MainApp()
-    MainApp().run()
+     KgApp().run()

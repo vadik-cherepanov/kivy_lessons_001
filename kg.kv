@@ -1,0 +1,20 @@
+#:kivy 2.0.0
+
+<KgWeight>:
+    kg_input:kg_input
+    gramm_result:gramm_result
+    orientation:"horizontal"
+    TextInput:
+        id:kg_input
+        multiline:False
+        input_filter:'float'
+        font_size:'40sp'
+        on_text_validate: root.convert_to_gramm()
+    Label:
+        text:'='
+        size_hint:(0.2,0.6)
+        font_size:'50sp'
+        pos_hint:{'y':0.2}
+    Label:
+        id:gramm_result
+        font_size:'40sp'

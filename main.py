@@ -9,13 +9,6 @@ class MainApp(App):
         box = BoxLayout(orientation='vertical')
         clr_picker = ColorPicker()
         box.add_widget(clr_picker)
-
-        def on_color(instance, value):
-            print("RGBA = ", str(value))  # or instance.color
-            print("HSV = ", str(instance.hsv))
-            print("HEX = ", str(instance.hex_color))
-
-        clr_picker.bind(color=on_color)
         return box
 
 

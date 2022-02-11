@@ -2,21 +2,20 @@ from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.codeinput import CodeInput
+from pygments.lexers import PythonLexer
 
 
 class MainApp(App):
 
     def build(self):
         box = BoxLayout(orientation='vertical')
-        btn = Button(text='Моя первая кнопка!', on_press=self.on)
-        global label
-        label = Label()
-        box.add_widget(btn)
-        box.add_widget(label)
+        codeinput = CodeInput(lexer=PythonLexer())
+        box.add_widget(codeinput)
         return box
 
-    def on(self, *args):
-        label.text = 'Hello, kivy!'
+    # def on(self, *args):
+    #
 
 
 
